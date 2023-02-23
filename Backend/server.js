@@ -23,7 +23,7 @@ app.use('/api/user', userRoute)
 
 
 app.use('/', (req, res) => {
-    console.log('hello world');
+    res.send('iknowsaint')
 })
 
 app.use(errorHandler)

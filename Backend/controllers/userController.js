@@ -65,9 +65,57 @@ const updatedUser = asyncHandler(async (req, res) => {
     }
 });
 
+//block user
+const blockUser = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    //validateMongoDbId(id);
+    console.log(id);
+
+    try {
+        const blockusr = await User.findByIdAndUpdate(
+            id,
+            {
+                isBlocked: true,
+            },
+            {
+                new: true,
+            }
+        );
+        res.json({
+            msg: 'user blocked'
+        });
+    } catch (error) {
+        throw new Error(error);
+    }
+});
+// unblock user
+const unblockUser = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    // validateMongoDbId(id);
+
+    try {
+        const unblock = await User.findByIdAndUpdate(
+            id,
+            {
+                isBlocked: false,
+            },
+            {
+                new: true,
+            }
+        );
+        res.json({
+            message: "User UnBlocked",
+        });
+    } catch (error) {
+        throw new Error(error);
+    }
+});
+
 module.exports = {
     getallUser,
     getaUser,
     deleteaUser,
-    updatedUser
+    updatedUser,
+    blockUser,
+    unblockUser
 }
