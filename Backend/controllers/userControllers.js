@@ -31,6 +31,9 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
     // check if user exists or not
     const findUser = await User.findOne({ email })
     if (findUser && (await findUser.isPasswordMatched(password))) {
+        /**
+        * TODO:affter user Login
+        */
         res.json({
             _id: findUser?._id,
             firstname: findUser?.firstname,
