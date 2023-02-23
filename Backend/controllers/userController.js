@@ -26,7 +26,48 @@ const getaUser = asyncHandler(async (req, res) => {
     }
 });
 
+//delete user
+const deleteaUser = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    //validateMongoDbId(id);
+
+    try {
+        const deleteaUser = await User.findByIdAndDelete(id);
+        res.json({
+            deleteaUser,
+        });
+    } catch (error) {
+        throw new Error(error);
+    }
+});
+
+// update user
+const updatedUser = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    //validateMongoDbId(_id);
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(
+            _id,
+            {
+                firstname: req?.body?.firstname,
+                lastname: req?.body?.lastname,
+                email: req?.body?.email,
+                mobile: req?.body?.mobile,
+            },
+            {
+                new: true,
+            }
+        );
+        res.json(updatedUser);
+    } catch (error) {
+        throw new Error(error);
+    }
+});
+
 module.exports = {
     getallUser,
-    getaUser
+    getaUser,
+    deleteaUser,
+    updatedUser
 }
