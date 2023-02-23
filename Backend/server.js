@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const dbConnect = require('./config/dbConnet');
 const authRouter = require('./routes/authRoute');
-const { notFound, errorHandler } = require('./middlewares/errorHandler')
+const { notFound, errorHandler } = require('./middlewares/errorHandler');
+const userRoute = require('./routes/userRoute');
 
 
 const app = express();
@@ -18,6 +19,9 @@ dbConnect();
 app.use(bodyParser.json(urlencoded({ extended: false })))
 // Routes
 app.use('/api/user', authRouter)
+app.use('/api/user', userRoute)
+
+
 app.use('/', (req, res) => {
     console.log('hello world');
 })
