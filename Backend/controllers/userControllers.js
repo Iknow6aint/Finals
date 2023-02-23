@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const asyncHandler = require("express-async-handler");
+const userModel = require('../models/userModel');
 
 const createUser = asyncHandler(async (req, res) => {
     /**
@@ -25,7 +26,19 @@ const createUser = asyncHandler(async (req, res) => {
     }
 });
 
+const loginUserCtrl = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    // check if user exists or not
+    const findUser = await User.findOne({ email })
+    if (findUser && (await findUser.isPasswordMatched(password))) {
+        res.json(findUser)
+    } else {
+        throw new Error("invalid credentials")
+    }
+});
+
 
 module.exports = {
-    createUser
+    createUser,
+    loginUserCtrl
 }
