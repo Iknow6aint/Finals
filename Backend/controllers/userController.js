@@ -46,7 +46,9 @@ const deleteaUser = asyncHandler(async (req, res) => {
 const updatedUser = asyncHandler(async (req, res) => {
     const { _id } = req.user;
     validateMongoDbId(_id);
-
+    /**
+       * TODO:update user
+       */
     try {
         const updatedUser = await User.findByIdAndUpdate(
             _id,
@@ -93,7 +95,9 @@ const blockUser = asyncHandler(async (req, res) => {
 const unblockUser = asyncHandler(async (req, res) => {
     const { id } = req.params;
     validateMongoDbId(id);
-
+    /**
+       * TODO:block users
+     */
     try {
         const unblock = await User.findByIdAndUpdate(
             id,

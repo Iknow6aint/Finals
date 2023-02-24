@@ -43,6 +43,9 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
        * TODO:update refreshtoken
        */
         const updateuser = await User.findByIdAndUpdate(
+            /**
+       * TODO:update refreshtoken
+       */
             findUser.id,
             {
                 refreshToken: refreshToken,
@@ -68,11 +71,16 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
 // handle refersh token
 const handleRefreshToken = asyncHandler(async (req, res) => {
     const cookie = req.cookies;
-
+    /**
+       * TODO:check for cookies
+    */
     if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
     const refreshToken = cookie.refreshToken;
     const user = await User.findOne({ refreshToken });
     if (!user) throw new Error(" No Refresh token present in db or not matched");
+    /**
+       * TODO:verify tokek
+     */
     jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
         if (err || user.id !== decoded.id) {
             throw new Error("There is something wrong with refresh token");
@@ -82,8 +90,44 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
     });
 });
 
+// logout
+const logout = asyncHandler(async (req, res) => {
+    const cookie = req.cookies;
+    if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
+    const refreshToken = cookie.refreshToken;
+    const user = await User.findOne({ refreshToken });
+
+    /**
+       * TODO:check user
+    */
+
+    if (!user) {
+        /**
+       * TODO:clear cookies
+       */
+        res.clearCookie("refreshToken", {
+            httpOnly: true,
+            secure: true,
+        });
+        return res.sendStatus(204); // forbidden
+    }
+    await User.findOneAndUpdate(refreshToken, {
+        refreshToken: "",
+    });
+
+    /**
+       * TODO:update refreshtoken
+    */
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: true,
+    });
+    res.sendStatus(204); // forbidden
+});
+
 module.exports = {
     createUser,
     loginUserCtrl,
-    handleRefreshToken
+    handleRefreshToken,
+    logout
 }
