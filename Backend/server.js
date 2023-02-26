@@ -5,6 +5,7 @@ const dbConnect = require('./config/dbConnet');
 const authRouter = require('./routes/authRoute');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const userRoute = require('./routes/userRoute');
+const productRouter = require('./routes/productRoute');
 
 
 const app = express();
@@ -18,8 +19,10 @@ dbConnect();
 
 app.use(bodyParser.json(urlencoded({ extended: false })))
 // Routes
-app.use('/api/user', authRouter)
+app.use('/api/auth', authRouter)
 app.use('/api/user', userRoute)
+app.use('/api/product', productRouter)
+
 
 
 app.use('/', (req, res) => {
