@@ -6,12 +6,13 @@ const authRouter = require('./routes/authRoute');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const userRoute = require('./routes/userRoute');
 const productRouter = require('./routes/productRoute');
-
+const morgan = require('morgan')
 
 const app = express();
 const dotenv = require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
+app.use(morgan('dev'));
 
 //db init
 dbConnect();
