@@ -6,9 +6,9 @@ const { isAdmin, authMiddleware } = require('../middlewares/authMiddlewears');
 const productRouter = express.Router();
 
 
-productRouter.post('/create-product', authMiddleware, isAdmin, createProduct)
-productRouter.get('/:id', isAdmin, getaProduct)
 productRouter.get('/', getAllProduct);
+productRouter.post('/create', authMiddleware, isAdmin, createProduct)
+productRouter.get('/:id', getaProduct)
 productRouter.put('/update/:id', authMiddleware, isAdmin, updateProduct);
 productRouter.delete('/delete/:id', authMiddleware, isAdmin, deleteProduct);
 
