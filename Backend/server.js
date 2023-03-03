@@ -7,12 +7,16 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const userRoute = require('./routes/userRoute');
 const productRouter = require('./routes/productRoute');
 const morgan = require('morgan')
+const debug = require('debug')
 
 const app = express();
 const dotenv = require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
+debug(express)
 app.use(morgan('dev'));
+
+
 
 //db init
 dbConnect();
@@ -34,5 +38,5 @@ app.use(errorHandler)
 app.use(notFound)
 //Listen
 app.listen(PORT, () => {
-    console.log(`running on ${PORT}`);
+    console.log(`running on ${PORT} 🌍🌍🌍🌍🌐`);
 })
