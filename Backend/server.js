@@ -7,7 +7,8 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const userRoute = require('./routes/userRoute');
 const productRouter = require('./routes/productRoute');
 const morgan = require('morgan')
-const debug = require('debug')
+const debug = require('debug');
+const BlogRouter = require('./routes/blogRoute');
 
 const app = express();
 const dotenv = require('dotenv').config();
@@ -27,6 +28,7 @@ app.use(bodyParser.json(urlencoded({ extended: false })))
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRoute)
 app.use('/api/product', productRouter)
+app.use('/api/blog', BlogRouter)
 
 
 
