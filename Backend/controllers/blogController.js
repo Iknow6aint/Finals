@@ -62,11 +62,22 @@ const getAllBlogs = asyncHandler(async (req, res) => {
     }
 });
 
-
+// delete blog
+const deleteBlog = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    validateMongoDbId(id);
+    try {
+        const deletedBlog = await Blog.findByIdAndDelete(id);
+        res.json(deletedBlog);
+    } catch (error) {
+        throw new Error(error);
+    }
+});
 
 module.exports = {
     createBlog,
     updateBlog,
     getBlog,
-    getAllBlogs
+    getAllBlogs,
+    deleteBlog
 }
