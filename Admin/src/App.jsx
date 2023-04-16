@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/reset-password" element={<Resetpassword />} />
+                <Route path="/forgot-password" element={<ForgetPassword />} />
                 <Route path="/admin" element={<MainLayout />} />
             </Routes>
         </BrowserRouter>
