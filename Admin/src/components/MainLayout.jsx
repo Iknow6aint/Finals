@@ -13,6 +13,9 @@ const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
 
+    const {
+        token: { colorBgContainer },
+    } = theme.useToken();
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -44,7 +47,7 @@ const MainLayout = () => {
                 <Header
                     style={{
                         padding: 0,
-
+                        background: colorBgContainer,
                     }}
                 >
                     {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -57,6 +60,7 @@ const MainLayout = () => {
                         margin: '24px 16px',
                         padding: 24,
                         minHeight: 280,
+                        background: colorBgContainer,
                     }}
                 >
                     Content
