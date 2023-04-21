@@ -5,8 +5,16 @@ import {
     UserOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
+import { AiOutlineDashboard, AiOutlineShoppingCart, AiOutlineUsergroupAdd } from "react-icons/ai"
+import { SiBrandfolder } from "react-icons/si"
+import { BiCategory } from "react-icons/bi"
+import { FcServices } from "react-icons/fc"
+import { TbMenuOrder } from "react-icons/tb"
+import { FaBlogger } from "react-icons/fa"
+
 import { Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 
 
@@ -16,6 +24,8 @@ const MainLayout = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+
+    const navigate = useNavigate();
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -24,22 +34,99 @@ const MainLayout = () => {
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={['1']}
+                    onClick={({ key }) => {
+                        if (key == 'signOut') {
+
+                        } else {
+                            navigate(key)
+                        }
+                    }}
                     items={[
                         {
-                            key: '1',
-                            icon: <UserOutlined />,
-                            label: 'nav 1',
+                            key: '',
+                            icon: <AiOutlineDashboard className='fs-4' />,
+                            label: 'Dashboard',
                         },
                         {
-                            key: '2',
-                            icon: <VideoCameraOutlined />,
-                            label: 'nav 2',
+                            key: 'customers',
+                            icon: <AiOutlineUsergroupAdd className='fs-4' />,
+                            label: 'Cutomers',
                         },
                         {
-                            key: '3',
-                            icon: <UploadOutlined />,
-                            label: 'nav 3',
+                            key: 'catalog',
+                            icon: <AiOutlineShoppingCart className='fs-4' />,
+                            label: 'Catalog',
+                            children: [
+                                {
+                                    key: 'Product',
+                                    icon: <AiOutlineShoppingCart className='fs-4' />,
+                                    label: 'Add product',
+                                },
+                                {
+                                    key: 'Product-list',
+                                    icon: <AiOutlineShoppingCart className='fs-4' />,
+                                    label: 'Product-list',
+                                },
+                                {
+                                    key: 'brand',
+                                    icon: <SiBrandfolder className='fs-4' />,
+                                    label: 'Brand',
+                                },
+                                {
+                                    key: 'list-brand',
+                                    icon: <SiBrandfolder className='fs-4' />,
+                                    label: 'Brand List',
+                                },
+                                {
+                                    key: 'Category',
+                                    icon: <BiCategory className='fs-4' />,
+                                    label: 'Category',
+                                },
+                                {
+                                    key: 'list-category',
+                                    icon: <BiCategory className='fs-4' />,
+                                    label: 'CategoryList',
+                                },
+                                {
+                                    key: 'Services',
+                                    icon: <FcServices className='fs-4' />,
+                                    label: 'Services',
+                                },
+                                {
+                                    key: 'list-service',
+                                    icon: <FcServices className='fs-4' />,
+                                    label: 'Service List',
+                                },
+                            ]
                         },
+                        {
+                            key: 'orders',
+                            icon: <TbMenuOrder className='fs-4' />,
+                            label: 'order',
+                        },
+                        {
+                            key: 'blog',
+                            icon: <FaBlogger className='fs-4' />,
+                            label: 'Blogs',
+                            children: [
+                                {
+                                    key: 'blog',
+                                    icon: <TbMenuOrder className='fs-4' />,
+                                    label: 'Blog',
+                                },
+                                {
+                                    key: 'blog-list',
+                                    icon: <TbMenuOrder className='fs-4' />,
+                                    label: 'Add Blog',
+                                },
+                                {
+                                    key: 'blog-category-list',
+                                    icon: <TbMenuOrder className='fs-4' />,
+                                    label: 'Blog Categoy List',
+                                },
+                            ]
+                        },
+
                     ]}
                 />
             </Sider>
