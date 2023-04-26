@@ -6,3 +6,81 @@ body {
     text-decoration: none;
     display: inline-block;
 } */
+
+.trigger {
+    padding: 0 24px;
+    font-size: 10px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover {
+    color: #181818;
+}
+
+.logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-layout {
+    min-height: 100vh;
+
+}
+
+.ant-layout-sider {
+    flex: 0 0 250px;
+    max-width: 250px;
+    min-width: 250px;
+    width: 250px;
+}
+
+.ant-layout-sider-collapsed {
+    flex: 0 0 80px !important;
+    max-width: 80px !important;
+    min-width: 80px !important;
+    width: 80px;
+}
+
+.sm-logo {
+    display: none;
+    transition: 0.3s;
+}
+
+.lg-logo {
+    transition: 0.3s;
+}
+
+.ant-layout-sider-collapsed .sm-logo {
+    display: block;
+    transition: 0.3s;
+}
+
+.ant-layout-sider-collapsed .lg-logo {
+    display: none;
+    transition: 0.3s;
+}
+
+.logo {
+    background-color: #ffd333;
+    margin: 0;
+    height: 64px;
+}
+
+main {
+    overflow-y: scroll;
+}
+
+.ant-menu-title-content {
+    font-size: 16px;
+}
+
+.ant-layout-header h5 {
+    line-height: 30px;
+}
+
+.ant-layout-header p {
+    line-height: 20px;
+}

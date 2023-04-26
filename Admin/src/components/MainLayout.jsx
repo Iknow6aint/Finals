@@ -7,14 +7,14 @@ import {
 } from '@ant-design/icons';
 import { AiOutlineDashboard, AiOutlineShoppingCart, AiOutlineUsergroupAdd } from "react-icons/ai"
 import { SiBrandfolder } from "react-icons/si"
-import { BiCategory } from "react-icons/bi"
+import { BiCategory, BiPhoneCall, BiCartDownload, BiToggleLeft, BiToggleRight } from "react-icons/bi"
 import { FcServices } from "react-icons/fc"
 import { TbMenuOrder } from "react-icons/tb"
 import { FaBlogger } from "react-icons/fa"
 
 import { Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 
 
@@ -29,7 +29,13 @@ const MainLayout = () => {
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className="logo" />
+                <div className="logo">
+                    <h2 className='textwhite fs-5 text-center py-3 mb-0'>
+                        <span className='sm-logo'>ap</span>
+                        <span className='lg-logo'> Admin Panel</span>
+                    </h2>
+                </div>
+
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -101,7 +107,7 @@ const MainLayout = () => {
                         },
                         {
                             key: 'orders',
-                            icon: <TbMenuOrder className='fs-4' />,
+                            icon: < BiCartDownload className='fs-4' />,
                             label: 'order',
                         },
                         {
@@ -110,21 +116,31 @@ const MainLayout = () => {
                             label: 'Blogs',
                             children: [
                                 {
-                                    key: 'blog',
-                                    icon: <TbMenuOrder className='fs-4' />,
-                                    label: 'Blog',
-                                },
-                                {
-                                    key: 'blog-list',
+                                    key: 'add-blog',
                                     icon: <TbMenuOrder className='fs-4' />,
                                     label: 'Add Blog',
                                 },
                                 {
-                                    key: 'blog-category-list',
+                                    key: 'blog-list',
+                                    icon: <FaBlogger className='fs-4' />,
+                                    label: 'Blog List',
+                                },
+                                {
+                                    key: 'add-blog-list',
                                     icon: <TbMenuOrder className='fs-4' />,
+                                    label: 'Add Blog List',
+                                },
+                                {
+                                    key: 'blog-category-list',
+                                    icon: <FaBlogger className='fs-4' />,
                                     label: 'Blog Categoy List',
                                 },
                             ]
+                        },
+                        {
+                            key: 'enquires',
+                            icon: < BiPhoneCall className='fs-4' />,
+                            label: 'order',
                         },
 
                     ]}
@@ -132,6 +148,7 @@ const MainLayout = () => {
             </Sider>
             <Layout className="site-layout">
                 <Header
+                    className='d-flex justify-content-between ps-3 ps-5 '
                     style={{
                         padding: 0,
                         background: colorBgContainer,
@@ -141,6 +158,21 @@ const MainLayout = () => {
                         className: 'trigger',
                         onClick: () => setCollapsed(!collapsed),
                     })}
+                    <div className='d-flex gap-3 align-items-center'>
+                        <div></div>
+                        <div className='d-flex gap-3 align-items-center'>
+                            <div>
+                                <img
+                                    width={32}
+                                    height={32}
+                                    src="" alt="" />
+                            </div>
+                            <div>
+                                <h5 className='mb-0'>iknowsaint</h5>
+                                <p className='mb-0'>iknowsaint@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
                 </Header>
                 <Content
                     style={{
@@ -150,7 +182,7 @@ const MainLayout = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    Content
+                    <Outlet />
                 </Content>
             </Layout>
         </Layout>
