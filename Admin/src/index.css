@@ -43,7 +43,7 @@ body {
     flex: 0 0 80px !important;
     max-width: 80px !important;
     min-width: 80px !important;
-    width: 80px;
+    width: 80px !important;
 }
 
 .sm-logo {
@@ -73,6 +73,7 @@ body {
 
 main {
     overflow-y: scroll;
+    background-color: transparent;
 }
 
 .ant-menu-title-content {

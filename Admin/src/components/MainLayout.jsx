@@ -190,9 +190,9 @@ const MainLayout = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    <main>
-                        <Outlet />
-                    </main>
+
+                    <Outlet />
+
                 </Content>
             </Layout>
         </Layout>
