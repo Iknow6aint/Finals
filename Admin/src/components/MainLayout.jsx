@@ -131,7 +131,7 @@ const MainLayout = () => {
                                     label: 'Add Blog List',
                                 },
                                 {
-                                    key: 'blog-category-list',
+                                    key: 'blog-cat-list',
                                     icon: <FaBlogger className='fs-4' />,
                                     label: 'Blog Categoy List',
                                 },

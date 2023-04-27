@@ -8,6 +8,8 @@ import ForgetPassword from "./pages/ForgetPassword";
 import MainLayout from "./components/MainLayout";
 import Enquiries from "./pages/Enquiries";
 import BlogList from "./pages/BlogList";
+import BlogCatList from "./pages/BlogCatList";
+import Orders from "./pages/Orders";
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
                     <Route index element={<Dashboard />} />
                     <Route path="enquires" element={<Enquiries />} />
                     <Route path="blog-list" element={<BlogList />} />
+                    <Route path="blog-cat-list" element={<BlogCatList />} />
+                    <Route path="blog-cat-list" element={<Orders />} />
                 </Route>
             </Routes>
         </BrowserRouter>
