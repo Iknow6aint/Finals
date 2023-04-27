@@ -1,8 +1,91 @@
 import React from 'react'
 import { BsArrowUp } from 'react-icons/bs'
+import { Column } from '@ant-design/plots';
 
 
 const Dashboard = () => {
+    const data = [
+        {
+            type: 'Jan',
+            sales: 38,
+        },
+        {
+            type: 'Feb',
+            sales: 52,
+        },
+        {
+            type: 'March',
+            sales: 61,
+        },
+        {
+            type: 'April',
+            sales: 145,
+        },
+        {
+            type: 'May',
+            sales: 48,
+        },
+        {
+            type: 'Jun',
+            sales: 38,
+        },
+        {
+            type: 'July',
+            sales: 54,
+        },
+        {
+            type: 'aug',
+            sales: 53,
+        },
+        {
+            type: 'sep',
+            sales: 43,
+        },
+        {
+            type: 'Oct',
+            sales: 28,
+        },
+        {
+            type: 'Nov',
+            sales: 32,
+        },
+        {
+            type: 'Dec',
+            sales: 45,
+        },
+    ];
+    const config = {
+        data,
+        xField: 'type',
+        yField: 'sales',
+        color: ({ type }) => {
+            return "#ffd33"
+        },
+        label: {
+            // 可手动配置 label 数据标签位置
+            position: 'middle',
+            // 'top', 'bottom', 'middle',
+            // 配置样式
+            style: {
+                fill: '#FFFFFF',
+                opacity: 1,
+            },
+        },
+        xAxis: {
+            label: {
+                autoHide: true,
+                autoRotate: false,
+            },
+        },
+        meta: {
+            type: {
+                alias: 'Month',
+            },
+            sales: {
+                alias: 'Income',
+            },
+        },
+    };
     return (
         <div>
             <h3 className='mb-4'>Dashboard</h3>
@@ -21,7 +104,7 @@ const Dashboard = () => {
                         <p>Total</p> <h4 className='mb-0'>$1400</h4>
                     </div>
                     <div>
-                        <h6><BsArrowUp />35%</h6>
+                        <h6 className='red'><BsArrowUp />35%</h6>
                         <p className='mb-0'> compare to April</p>
                     </div>
                 </div>
@@ -30,9 +113,15 @@ const Dashboard = () => {
                         <p>Total</p> <h4 className='mb-0'>$1400</h4>
                     </div>
                     <div>
-                        <h6><BsArrowUp />35%</h6>
+                        <h6 className='green'><BsArrowUp />35%</h6>
                         <p className='mb-0'>compare to April</p>
                     </div>
+                </div>
+            </div>
+            <div className='mt-4'>
+                <h3>Income Stats</h3>
+                <div>
+                    <Column {...config} />
                 </div>
             </div>
         </div>
