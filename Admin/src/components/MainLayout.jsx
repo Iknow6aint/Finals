@@ -5,7 +5,7 @@ import {
     UserOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
-import { AiOutlineDashboard, AiOutlineShoppingCart, AiOutlineUsergroupAdd } from "react-icons/ai"
+import { AiOutlineDashboard, AiOutlineShoppingCart, AiOutlineUsergroupAdd, AiFillNotification } from "react-icons/ai"
 import { SiBrandfolder } from "react-icons/si"
 import { BiCategory, BiPhoneCall, BiCartDownload, BiToggleLeft, BiToggleRight } from "react-icons/bi"
 import { FcServices } from "react-icons/fc"
@@ -49,7 +49,7 @@ const MainLayout = () => {
                     }}
                     items={[
                         {
-                            key: '',
+                            key: 'dashboard',
                             icon: <AiOutlineDashboard className='fs-4' />,
                             label: 'Dashboard',
                         },
@@ -148,7 +148,7 @@ const MainLayout = () => {
             </Sider>
             <Layout className="site-layout">
                 <Header
-                    className='d-flex justify-content-between ps-3 ps-5 '
+                    className='d-flex justify-content-between ps-3 pe-5 '
                     style={{
                         padding: 0,
                         background: colorBgContainer,
@@ -158,8 +158,16 @@ const MainLayout = () => {
                         className: 'trigger',
                         onClick: () => setCollapsed(!collapsed),
                     })}
-                    <div className='d-flex gap-3 align-items-center'>
-                        <div></div>
+                    <div className='d-flex gap-4 align-items-center'>
+                        <div>
+                            h
+                        </div>
+                        <div className='position-relative'>
+                            <AiFillNotification className='fs-4' />
+                            <span className='badge bg-warning rounded-circle p-1 position-absolute'>
+                                3
+                            </span>
+                        </div>
                         <div className='d-flex gap-3 align-items-center'>
                             <div>
                                 <img
@@ -182,7 +190,9 @@ const MainLayout = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    <Outlet />
+                    <main>
+                        <Outlet />
+                    </main>
                 </Content>
             </Layout>
         </Layout>
