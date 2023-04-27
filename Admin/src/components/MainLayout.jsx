@@ -140,7 +140,7 @@ const MainLayout = () => {
                         {
                             key: 'enquires',
                             icon: < BiPhoneCall className='fs-4' />,
-                            label: 'order',
+                            label: 'Enquiries',
                         },
 
                     ]}

@@ -152,10 +152,16 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className='mt4'>
-                <h3>Recent Orders</h3>
+                <h3 className='mt-4'>Recent Orders</h3>
                 <div>
                     <Table columns={columns} dataSource={data1} />
                 </div>
+            </div>
+            <div className='mt-4'>
+                <h3 className='mt-4'>
+                    Recent Reviews
+                </h3>
+
             </div>
         </div>
     )
