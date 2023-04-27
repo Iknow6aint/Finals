@@ -72,8 +72,13 @@ body {
 }
 
 main {
+    height: 75vh;
     overflow-y: scroll;
     background-color: transparent;
+}
+
+main ::-webkit-scrollbar {
+    width: 0px;
 }
 
 .ant-menu-title-content {

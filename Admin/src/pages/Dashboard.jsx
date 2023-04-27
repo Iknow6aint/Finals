@@ -1,8 +1,35 @@
 import React from 'react'
 import { BsArrowUp } from 'react-icons/bs'
 import { Column } from '@ant-design/plots';
+import { Table } from 'antd';
 
-
+const columns = [
+    {
+        title: 'Sno',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Name',
+        dataIndex: 'name',
+    },
+    {
+        title: 'Product',
+        dataIndex: 'product',
+    },
+    {
+        title: 'Status',
+        dataIndex: 'status',
+    },
+];
+const data1 = [];
+for (let i = 0; i < 46; i++) {
+    data1.push({
+        key: i,
+        name: `Edward King ${i}`,
+        product: 32,
+        stauts: `London, Park Lane no. ${i}`,
+    });
+}
 const Dashboard = () => {
     const data = [
         {
@@ -122,6 +149,12 @@ const Dashboard = () => {
                 <h3>Income Stats</h3>
                 <div>
                     <Column {...config} />
+                </div>
+            </div>
+            <div className='mt4'>
+                <h3>Recent Orders</h3>
+                <div>
+                    <Table columns={columns} dataSource={data1} />
                 </div>
             </div>
         </div>
