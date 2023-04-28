@@ -10,6 +10,8 @@ import Enquiries from "./pages/Enquiries";
 import BlogList from "./pages/BlogList";
 import BlogCatList from "./pages/BlogCatList";
 import Orders from "./pages/Orders";
+import ListService from "./pages/ListService";
+import ListCategory from "./pages/ListCategory";
 
 function App() {
 
@@ -24,7 +26,9 @@ function App() {
                     <Route path="enquires" element={<Enquiries />} />
                     <Route path="blog-list" element={<BlogList />} />
                     <Route path="blog-cat-list" element={<BlogCatList />} />
-                    <Route path="blog-cat-list" element={<Orders />} />
+                    <Route path="customers" element={<Orders />} />
+                    <Route path="list-service" element={<ListService />} />
+                    <Route path="list-category" element={<ListCategory />} />
                 </Route>
             </Routes>
         </BrowserRouter>
