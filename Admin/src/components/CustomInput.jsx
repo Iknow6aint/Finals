@@ -1,18 +1,18 @@
 import React from "react";
 
 const CustomInput = (props) => {
-    const { type, name, placeholder, classname } = props;
+    const { type, name, Placeholder, classname } = props;
     return (
         <div
-        //  class='form-floating mb-3'
+            className='form-floating mb-3'
         >
             <input
                 type={type}
                 name={name}
-                placeholder={placeholder}
+                // placeholder={Placeholder}
                 className={`form-control ${classname}`}
             />
-            <placeholder></placeholder>
+            {/* <Placeholder></Placeholder> */}
         </div>
     );
 };
