@@ -111,7 +111,7 @@ const MainLayout = () => {
                             label: 'order',
                         },
                         {
-                            key: 'blog',
+                            key: 'blogs',
                             icon: <FaBlogger className='fs-4' />,
                             label: 'Blogs',
                             children: [
