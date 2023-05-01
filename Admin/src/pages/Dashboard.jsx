@@ -119,7 +119,7 @@ const Dashboard = () => {
             <div className='d-flex justify-content-between align-items-center gap-3'>
                 <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudnsed-3">
                     <div>
-                        <p>Total</p> <h4 className='mb-0'>$1400</h4>
+                        <p>Total</p> <h4 className='mb-0 sub-title '>$1400</h4>
                     </div>
                     <div>
                         <h6><BsArrowUp />35%</h6>
@@ -128,7 +128,7 @@ const Dashboard = () => {
                 </div>
                 <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
                     <div>
-                        <p>Total</p> <h4 className='mb-0'>$1400</h4>
+                        <p>Total</p> <h4 className='mb-0 sub-title '>$1400</h4>
                     </div>
                     <div>
                         <h6 className='red'><BsArrowUp />35%</h6>
@@ -137,7 +137,7 @@ const Dashboard = () => {
                 </div>
                 <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
                     <div>
-                        <p>Total</p> <h4 className='mb-0'>$1400</h4>
+                        <p>Total</p> <h4 className='mb-0 sub-title '>$1400</h4>
                     </div>
                     <div>
                         <h6 className='green'><BsArrowUp />35%</h6>
@@ -145,23 +145,19 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className='mt-4'>
-                <h3>Income Stats</h3>
-                <div>
-                    <Column {...config} />
+            <div className="d-flex gap-3 justify-content-between">
+                <div className='mt4 w-50 flex-grow-1'>
+                    <h3>Income Stats</h3>
+                    <div>
+                        <Column {...config} />
+                    </div>
                 </div>
-            </div>
-            <div className='mt4'>
-                <h3 className='mt-4'>Recent Orders</h3>
-                <div>
-                    <Table columns={columns} dataSource={data1} />
+                <div className='mt4 w-50 flex-grow-1'>
+                    <h3 className='mt-4'>Recent Orders</h3>
+                    <div>
+                        <Table columns={columns} dataSource={data1} />
+                    </div>
                 </div>
-            </div>
-            <div className='mt-4'>
-                <h3 className='mt-4'>
-                    Recent Reviews
-                </h3>
-
             </div>
         </div>
     )

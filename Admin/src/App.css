@@ -9,3 +9,18 @@
 .quill {
     background-color: white;
 }
+
+.form-control {
+    box-shadow: none;
+    border-color: #828599;
+}
+
+.title {
+    font: 28px;
+    font-family: Roboto;
+}
+
+.sub-title {
+    font: 24px;
+    font-family: Roboto;
+}

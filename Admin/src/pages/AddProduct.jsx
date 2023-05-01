@@ -34,7 +34,7 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <h3 className="mb-4">Add Blog Category</h3>
+            <h3 className="mb-4 title">Add Blog Category</h3>
             <Stepper
                 steps={[{ label: 'Add Product Details' }, { label: 'Upload Images' }, { label: 'Finish' }]}
                 activeStep={1}
