@@ -14,6 +14,7 @@ import ListService from "./pages/ListService";
 import ListCategory from "./pages/ListCategory";
 import AddBlog from "./pages/AddBlog";
 import AddBlogCat from "./pages/AddBlogCat";
+import AddProduct from "./pages/AddProduct";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path="customers" element={<Orders />} />
                     <Route path="list-service" element={<ListService />} />
                     <Route path="list-category" element={<ListCategory />} />
+                    <Route path="add-product" element={<AddProduct />} />
 
                 </Route>
             </Routes>

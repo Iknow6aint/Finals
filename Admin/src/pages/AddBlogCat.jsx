@@ -8,7 +8,7 @@ function AddBlogCat() {
             <div>
                 <form action="">
                     <CustomInput type='text' label="Enter Blog Category" />
-                    <button className='btn btn-success border-0 rounded-3 my-5' type='submit'>Add Blog Category</button>
+                    <button className='btn btn-success border-0 rounded-3 my-5' type='submit'>Add Product</button>
                 </form>
             </div>
         </div>
