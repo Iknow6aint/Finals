@@ -126,7 +126,7 @@ const MainLayout = () => {
                                     label: 'Blog List',
                                 },
                                 {
-                                    key: 'add-blog-list',
+                                    key: 'add-blog-cate',
                                     icon: <TbMenuOrder className='fs-4' />,
                                     label: 'Add Blog List',
                                 },

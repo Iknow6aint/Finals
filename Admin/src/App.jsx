@@ -13,6 +13,7 @@ import Orders from "./pages/Orders";
 import ListService from "./pages/ListService";
 import ListCategory from "./pages/ListCategory";
 import AddBlog from "./pages/AddBlog";
+import AddBlogCat from "./pages/AddBlogCat";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                     <Route path="enquires" element={<Enquiries />} />
                     <Route path="blog-list" element={<BlogList />} />
                     <Route path="add-blog" element={<AddBlog />} />
+                    <Route path="add-blog-cate" element={<AddBlogCat />} />
                     <Route path="blog-cat-list" element={<BlogCatList />} />
                     <Route path="customers" element={<Orders />} />
                     <Route path="list-service" element={<ListService />} />
