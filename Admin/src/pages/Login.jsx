@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup';
 
-import { login } from '../features/auth/authSlice'
+
 
 const Login = () => {
 

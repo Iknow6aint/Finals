@@ -75,7 +75,7 @@ const deleteBlog = asyncHandler(async (req, res) => {
 });
 
 // like blog
-const liketheBlog = asyncHandler(async (req, res) => {
+const likeBlog = asyncHandler(async (req, res) => {
     const { blogId } = req.body;
     validateMongoDbId(blogId);
     // Find the blog which you want to be liked
@@ -175,5 +175,7 @@ module.exports = {
     updateBlog,
     getBlog,
     getAllBlogs,
-    deleteBlog
+    deleteBlog,
+    likeBlog,
+    disliketheBlog
 }
