@@ -9,8 +9,8 @@ BlogRouter.put('/update/:id', authMiddleware, isAdmin, updateBlog)
 BlogRouter.delete('/delete/:id', authMiddleware, isAdmin, deleteBlog)
 BlogRouter.get('/', getAllBlogs);
 BlogRouter.get('/:id', getBlog);
-BlogRouter.get('/:id', authMiddleware, likeBlog);
-BlogRouter.get('/:id', authMiddleware, disliketheBlog);
+BlogRouter.get('/likes', authMiddleware, likeBlog);
+BlogRouter.get('/dislike', authMiddleware, disliketheBlog);
 
 
 module.exports = BlogRouter

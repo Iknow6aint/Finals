@@ -33,8 +33,8 @@ const getBlog = asyncHandler(async (req, res) => {
     validateMongoDbId(id);
     try {
         const getBlog = await Blog.findById(id)
-        // .populate("likes")
-        // .populate("dislikes");
+            .populate("likes")
+            .populate("dislikes");
 
         /**
        * TODO:update View on request
