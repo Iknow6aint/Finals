@@ -2,9 +2,16 @@ import React from 'react'
 import CustomInput from '../components/CustomInput'
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup';
 
+import { login } from '../features/auth/authSlice'
+
 const Login = () => {
+
+    const dispatch = useDispatch()
+
+    // Form validator schema
     let schema = Yup.object().shape({
         email: Yup.string().email('Email must be valid').required('Email is required'),
         password: Yup.string('Password mut be valid ').required('Password must be required'),
@@ -16,6 +23,7 @@ const Login = () => {
         },
         validationSchema: schema,
         onSubmit: values => {
+            dispatch(login(values))
             alert(JSON.stringify(values, null, 2));
         },
     });
