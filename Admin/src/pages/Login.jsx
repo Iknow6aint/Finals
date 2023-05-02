@@ -2,13 +2,19 @@ import React from 'react'
 import CustomInput from '../components/CustomInput'
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom'
+import * as Yup from 'yup';
 
 const Login = () => {
+    let schema = Yup.object().shape({
+        email: Yup.string().email('Email must be valid').required('Email is required'),
+        password: Yup.string('Password mut be valid ').required('Password must be required'),
+    });
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
+        validationSchema: schema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
@@ -26,15 +32,25 @@ const Login = () => {
                 <form action='' onSubmit={formik.handleSubmit}>
                     <CustomInput type="text" placeholder="Email Address" id="email" label='Email Address' name='email' onCh={formik.handleChange('email')}
                         value={formik.values.email} />
-                    <CustomInput type="text" placeholder="Password" id="pass" label='Password' name='password' onCh={formik.handleChange('passwords')}
+                    <div className="error">
+                        {formik.touched.email && formik.errors.email ? (
+                            <div>{formik.errors.email}</div>
+                        ) : null}
+                    </div>
+                    <CustomInput type="text" placeholder="password" id="pass" label='Password' name='password' onCh={formik.handleChange('password')}
                         value={formik.values.password} />
+                    <div className="error">
+                        {formik.touched.password && formik.errors.password ? (
+                            <div>{formik.errors.password}</div>
+                        ) : null}
+                    </div>
                     <div className="mb-3 text-end">
                         <Link to='forgot-password'>
                             Forgot Password?
                         </Link>
                     </div>
                     <button
-                        // to='/admin'
+                        to='/admin'
                         className='border-0 px-3 py-2 text-white fw-bold w-100'
                         style={{ background: '#ffd333' }}
                         type='submit'
