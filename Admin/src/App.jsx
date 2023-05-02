@@ -15,6 +15,7 @@ import ListCategory from "./pages/ListCategory";
 import AddBlog from "./pages/AddBlog";
 import AddBlogCat from "./pages/AddBlogCat";
 import AddProduct from "./pages/AddProduct";
+import SignUp from "./pages/SignUp";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgetPassword />} />
                 <Route path="/reset-password" element={<Resetpassword />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="/admin" element={<MainLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="enquires" element={<Enquiries />} />
