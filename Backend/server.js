@@ -9,6 +9,7 @@ const productRouter = require('./routes/productRoute');
 const morgan = require('morgan')
 const debug = require('debug');
 const BlogRouter = require('./routes/blogRoute');
+const categoryRouter = require('./routes/categoryRoute');
 
 const app = express();
 const dotenv = require('dotenv').config();
@@ -29,6 +30,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/user', userRoute)
 app.use('/api/product', productRouter)
 app.use('/api/blog', BlogRouter)
+app.use('/api/category', categoryRouter)
 
 
 
