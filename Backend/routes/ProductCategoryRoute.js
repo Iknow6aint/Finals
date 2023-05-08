@@ -12,6 +12,5 @@ categoryRouter.delete('/:id', authMiddleware, isAdmin, deleteCategory)
 categoryRouter.get('/:id', authMiddleware, isAdmin, deleteCategory)
 categoryRouter.get('/', authMiddleware, isAdmin, getAllCategory)
 
-
 module.exports = categoryRouter;
 
