@@ -9,7 +9,7 @@ const productRouter = require('./routes/productRoute');
 const morgan = require('morgan')
 const debug = require('debug');
 const BlogRouter = require('./routes/blogRoute');
-const categoryRouter = require('./routes/categoryRoute');
+const categoryRouter = require('./routes/ProductCategoryRoute');
 
 const app = express();
 const dotenv = require('dotenv').config();
