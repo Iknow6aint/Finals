@@ -116,11 +116,42 @@ const unblockUser = asyncHandler(async (req, res) => {
     }
 });
 
+const getWishList = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+
+    try {
+        const findUser = User.findById(_id).populate('wishlist')
+        res.json(findUser)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+const saveUserAdddress = asyncHandler(async (req, res, next) => {
+    const { _id } = req.user;
+    const { address, city, state, country, zip } = req.body;
+    try {
+        const updatedUser = await User.findByIdAndUpdate(
+            _id,
+            {
+                address: address,
+            },
+            {
+                new: true,
+            }
+        );
+        res.json(updatedUser);
+    } catch (error) {
+        throw new Error(error);
+    }
+})
 module.exports = {
     getallUser,
     getaUser,
     deleteaUser,
     updatedUser,
     blockUser,
-    unblockUser
+    unblockUser,
+    getWishList,
+    saveUserAdddress
 }

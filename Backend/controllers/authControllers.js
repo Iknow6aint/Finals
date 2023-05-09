@@ -69,6 +69,49 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
         throw new Error("invalid credentials")
     }
 });
+
+//admin login
+const loginAdminCtrl = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    // check if user exists or not
+    const findAdmin = await User.findOne({ email })
+    if (findAdmin.role != 'admin') throw new Error('Not authorised')
+    if (findAdmin && (await findAdmin.isPasswordMatched(password))) {
+        /**
+        * TODO:affter user Login
+        */
+        const refreshToken = await generateRefereshToken(findAdmin?.id);
+        /**
+       * TODO:update refreshtoken
+       */
+        const updateuser = await User.findByIdAndUpdate(
+            /**
+       * TODO:update refreshtoken
+       */
+            findAdmin.id,
+            {
+                refreshToken: refreshToken,
+            },
+            { new: true }
+        );
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            maxAge: 72 * 60 * 60 * 1000,
+        });
+        res.json({
+            _id: findUser?._id,
+            firstname: findAdmin?.firstname,
+            lastname: findAdmin?.lastname,
+            email: findAdmin?.email,
+            mobile: findAdmin?.mobile,
+            token: generateToken(findAdmin?._id),
+        });
+    } else {
+        throw new Error("invalid credentials")
+    }
+});
+
+
 // handle refersh token
 const handleRefreshToken = asyncHandler(async (req, res) => {
     const cookie = req.cookies;
@@ -163,11 +206,13 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
     }
 });
 
+
 module.exports = {
     createUser,
     loginUserCtrl,
     handleRefreshToken,
     logout,
     updatePassword,
-    forgotPasswordToken
+    forgotPasswordToken,
+    loginAdminCtrl
 }
