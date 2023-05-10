@@ -187,6 +187,28 @@ const userCart = asyncHandler(async (req, res) => {
     }
 })
 
+const getUserCart = asyncHandler(async (req, res) => {
+    const { _id } = req.user
+    try {
+        const cart = await cartModel.findById({ orderby: _id }).populate(
+            'products.product', "_id title price totalAfterDiscount"
+        )
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+const emptyCart = asyncHandler(async (req, res) => {
+    const { _id } = req.user
+    try {
+        const user = await User.findOne({ _id })
+
+        const cart = await cartModel.findOneAndRemove({ orderby: user._id })
+        res.json()
+    } catch (error) {
+        throw new Error(error)
+    }
+})
 
 module.exports = {
     getallUser,
@@ -197,5 +219,7 @@ module.exports = {
     unblockUser,
     getWishList,
     saveUserAdddress,
-    userCart
+    userCart,
+    getUserCart,
+    emptyCart
 }
