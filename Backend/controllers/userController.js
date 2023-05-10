@@ -1,6 +1,8 @@
 const User = require('../models/userModel')
+const Product = require('../models/productModel')
 const asyncHandler = require("express-async-handler");
 const validateMongoDbId = require('../utills/validateMongodbid');
+const cartModel = require('../models/cartModel');
 
 // get all  users
 const getallUser = asyncHandler(async (req, res) => {
@@ -145,6 +147,47 @@ const saveUserAdddress = asyncHandler(async (req, res, next) => {
         throw new Error(error);
     }
 })
+
+const userCart = asyncHandler(async (req, res) => {
+    const { cart } = req.body;
+    const { _id } = req.user;
+
+    validateMongoDbId(_id)
+    try {
+        let products = []
+        const user = await User.findById(_id)
+
+        const prevCart = await cartModel.findOne({ orderby: user.id })
+
+        if (prevCart) {
+            prevCart.remove()
+        }
+
+        for (let i = 0; i < cart.length; i++) {
+            const object = {};
+            object.product = cart[i]._id;
+            object.count = cart[i]._id;
+
+            let getPrice = await Product.findById(cart[i]._id).select('price').exec()
+            object.price = getPrice.price;
+            products.push[object];
+        }
+        let cartTotal = 0
+        for (let i = 0; i < array.length; i++) {
+            cartTotal = cartTotal + products[i].price * products[i].count
+        }
+        const newCart = await new cartModel({
+            products,
+            cartTotal,
+            orderby: user?._id
+        }).save()
+        res.json(newCart)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+
 module.exports = {
     getallUser,
     getaUser,
@@ -153,5 +196,6 @@ module.exports = {
     blockUser,
     unblockUser,
     getWishList,
-    saveUserAdddress
+    saveUserAdddress,
+    userCart
 }
