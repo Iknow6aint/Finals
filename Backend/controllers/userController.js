@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const Product = require('../models/productModel')
+const Coupon = require('../models/coupounModels')
 const asyncHandler = require("express-async-handler");
 const validateMongoDbId = require('../utills/validateMongodbid');
 const cartModel = require('../models/cartModel');
@@ -210,6 +211,10 @@ const emptyCart = asyncHandler(async (req, res) => {
     }
 })
 
+const applyCoupon = asyncHandler(async (req, res) => {
+    const { coupon } = req.body
+    const validCoupon = await Cou
+})
 module.exports = {
     getallUser,
     getaUser,
@@ -221,5 +226,6 @@ module.exports = {
     saveUserAdddress,
     userCart,
     getUserCart,
-    emptyCart
+    emptyCart,
+    applyCoupon
 }
