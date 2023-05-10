@@ -213,7 +213,20 @@ const emptyCart = asyncHandler(async (req, res) => {
 
 const applyCoupon = asyncHandler(async (req, res) => {
     const { coupon } = req.body
-    const validCoupon = await Cou
+    const { _id } = req.user
+    const validCoupon = await Coupon.find({ name: coupon })
+    if (validCoupon == null) {
+        throw new Error('invalid Coupon')
+    }
+
+    const user = await User.findOne({ _id });
+    let { cartTotal } = await cartModel.findOne({
+        orderby: user._id
+    }).populate('products.product');
+    let totalAfterDiscount = (
+        cartTotal - (cartTotal * validCoupon.discount) / 100).toFixed(2);
+    await cartModel.findByIdAndUpdate({ orderby: user._id }, { totalAfterDiscount }, { new: true })
+
 })
 module.exports = {
     getallUser,
