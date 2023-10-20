@@ -100,8 +100,8 @@ const loginAdminCtrl = asyncHandler(async (req, res) => {
         });
         res.json({
             _id: findUser?._id,
-            firstname: findAdmin?.firstname,
-            lastname: findAdmin?.lastname,
+            firstname: findAdmin?.FirstName,
+            lastname: findAdmin?.LastName,
             email: findAdmin?.email,
             mobile: findAdmin?.mobile,
             token: generateToken(findAdmin?._id),

@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 
 
 //db init
-dbConnect();
+
 
 
 app.use(bodyParser.json(urlencoded({ extended: false })))
@@ -43,4 +43,5 @@ app.use(notFound)
 //Listen
 app.listen(PORT, () => {
     console.log(`running on ${PORT} 🌍🌍🌍🌍🌐`);
+    dbConnect();
 })
